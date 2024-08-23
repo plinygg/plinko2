@@ -16,7 +16,7 @@ class Game:
         self.clock = pygame.time.Clock()
         self.delta_time = 0
 
-        # Pymunk
+        # Pymunk section
         self.space = pymunk.Space()
         self.space.gravity = (0, 1800)
 
@@ -37,27 +37,11 @@ class Game:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-                elif event.type == pygame.MOUSEBUTTONDOWN:
-                    # Get the position of the mouse click
-                    mouse_pos = pygame.mouse.get_pos()
-
-                    # Check if the mouse click position collides with the image rectangle
-                    if self.board.play_rect.collidepoint(mouse_pos):
-                        self.board.pressing_play = True
-                    else:
-                        self.board.pressing_play = False
-                # Spawn ball on left mouse button release
-                elif event.type == pygame.MOUSEBUTTONUP and event.button == 1 and self.board.pressing_play:
-                    mouse_pos = pygame.mouse.get_pos()
-                    if self.board.play_rect.collidepoint(mouse_pos):
-                        random_x = WIDTH//2 + random.choice([random.randint(-20, -1), random.randint(1, 20)])
-                        click.play()
-                        self.ball = Ball((random_x, 20), self.space, self.board, self.delta_time)
-                        self.ball_group.add(self.ball)
-                        self.board.pressing_play = False
-                    else:
-                        self.board.pressing_play = False
-
+                elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+                    random_x = WIDTH//2 + random.choice(random.randint(-20, -1), random.randint(1, 20))
+                    self.ball = Ball((random_x, 20), self.space, self.board, self.delta_time)
+                    self.ball_group.add(self.ball)
+            
             self.screen.fill(BG_COLOR)
 
             # Time variables

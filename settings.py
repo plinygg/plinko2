@@ -1,7 +1,7 @@
 import ctypes, pygame, pymunk
 
-TITLE_STRING = 'Plinko Ripoff'
-FPS = 60
+TITLE_STRING = 'Statistical Plinko'
+FPS = 15
 
 # Maintain resolution regardless of Windows scaling settings
 ctypes.windll.user32.SetProcessDPIAware()
