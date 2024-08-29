@@ -38,7 +38,7 @@ class Game:
                     pygame.quit()
                     sys.exit()
                 elif event.type == pygame.MOUSEBUTTONUP and event.button == 1:
-                    random_x = WIDTH//2 + random.choice(random.randint(-20, -1), random.randint(1, 20))
+                    random_x = WIDTH//2 + random.choice([random.randint(-20, -1), random.randint(1, 20)])
                     self.ball = Ball((random_x, 20), self.space, self.board, self.delta_time)
                     self.ball_group.add(self.ball)
             
